@@ -1,0 +1,25 @@
+﻿@model IEnumerable<Product>
+
+    <h2>Products</h2>
+    <table class="table table-bordered">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Price</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var product in Model)
+            {
+                <tr>
+                    <td>@product.Name</td>
+                    <td>@product.Price.ToString("C")</td>
+                    <td>
+                        @Html.ActionLink("Add to Cart", "AddToCart", "Cart", new { id = product.Id, name = product.Name, price = product.Price }, new { @class = "btn btn-primary" })
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    
